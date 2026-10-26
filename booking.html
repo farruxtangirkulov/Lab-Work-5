@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registan Travel — Booking</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">Registan <span>Travel</span></a>
+    <nav class="main-nav" aria-label="Main menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="booking.html" id="current-page">Booking</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Booking request</h1>
+      <p>The total price updates live as you choose a tour and travellers.</p>
+    </section>
+
+    <h2 class="page-title">Send us your request</h2>
+
+    <!-- novalidate: we validate in JavaScript, not with browser pop-ups -->
+    <form class="booking-form" id="booking-form" novalidate>
+
+      <label class="required" for="name">Full name</label>
+      <input type="text" id="name" name="name" autocomplete="name" placeholder="e.g. Aziza Karimova">
+
+      <label class="required" for="email">Email</label>
+      <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com">
+
+      <label class="required" for="tour">Tour</label>
+      <select id="tour" name="tour">
+        <option value="35"  data-name="Old Tashkent Walk">Old Tashkent Walk — 35 USD</option>
+        <option value="120" data-name="Registan &amp; Gur-e-Amir">Registan &amp; Gur-e-Amir — 120 USD</option>
+        <option value="210" data-name="Khiva Itchan Kala">Khiva Itchan Kala — 210 USD</option>
+      </select>
+
+      <label class="required" for="travellers">Number of travellers (1–12)</label>
+      <input type="number" id="travellers" name="travellers" min="1" max="12" step="1" value="1">
+
+      <label for="date">Date</label>
+      <input type="date" id="date" name="date">
+
+      <!-- live total appears here -->
+      <p id="price-box">Total: 1 × 35 USD = 35 USD</p>
+
+      <button type="submit" class="btn-submit">Send request</button>
+
+      <!-- red error / green confirmation message -->
+      <p id="form-msg" class="form-msg" role="alert"></p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Registan Travel · Tashkent, Uzbekistan · +998 90 000 00 00</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

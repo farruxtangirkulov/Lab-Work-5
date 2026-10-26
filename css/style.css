@@ -1,0 +1,309 @@
+/* ============================================================
+   Registan Travel — css/style.css
+   One stylesheet for index.html, booking.html AND the
+   Bootstrap version index-bootstrap.html (its helpers in §7).
+   Mobile first · tablet 768px · desktop 1200px
+   ============================================================ */
+
+/* ---------- 1. Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }  /* required: border-box everywhere */
+
+body {
+  margin: 0;
+  padding-top: 64px;                /* content must not hide under the fixed header */
+  font-family: Arial, sans-serif;   /* body: Arial, 16px */
+  font-size: 16px;
+  color: #222222;
+  background-color: #FAF6EE;        /* Sand — page background */
+}
+
+/* GROUP SELECTOR 1: headings share one rule */
+h1, h2, h3 {
+  font-family: Georgia, serif;      /* headings: Georgia */
+  color: #0B1F4B;                   /* Registan Night — headings */
+}
+
+/* ---------- 2. Fixed header (flexbox: logo left, menu right) ---------- */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;   /* logo left, menu right */
+  align-items: center;
+  gap: 8px;
+  min-height: 56px;
+  padding: 8px 16px;
+  background-color: #0B1F4B;        /* Registan Night — header */
+}
+
+.logo {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: #FFFFFF;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo span {                        /* <span> required by the brief */
+  color: #E0A526;                   /* Tile Gold accent */
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-nav a {
+  display: block;
+  padding: 8px 10px;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+/* LVHA order — :link, :visited, :hover, :active (order matters!) */
+.main-nav a:link    { color: #FFFFFF; }
+.main-nav a:visited { color: #FFFFFF; }
+.main-nav a:hover   { background-color: #E0A526; color: #0B1F4B; }  /* gold hover */
+.main-nav a:active  { background-color: #C98F14; color: #FFFFFF; }
+
+#current-page {                     /* ID SELECTOR — current page */
+  border-bottom: 4px solid #E0A526; /* gold bottom border */
+}
+
+/* ---------- 3. Hero ---------- */
+.hero {
+  padding: 48px 16px;
+  text-align: center;               /* centred text */
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #0B1F4B 0%, #2C4A8A 100%);  /* gradient */
+}
+
+.hero h1 { color: #FFFFFF; margin: 0 0 8px; }
+.hero p  { margin: 0; }
+
+.btn-cta {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 28px;
+  border: 0;
+  border-radius: 6px;
+  background-color: #E0A526;        /* Tile Gold stands out on the dark hero */
+  color: #0B1F4B;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.btn-cta:hover  { background-color: #C98F14; }
+.btn-cta:active { transform: scale(0.95); }      /* button shrinks when pressed */
+
+/* ---------- 4. Tour cards (mobile first: 1 per row) ---------- */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.cards .card {
+  position: relative;               /* containing block for the badge */
+  width: 100%;                      /* phones: 1 card per row */
+  padding: 16px;
+  background-color: #FFFFFF;
+  border: 1px solid #E3DCCB;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cards .card:hover {                /* card rises on hover */
+  transform: translateY(-6px);
+  box-shadow: 0 10px 18px rgba(11, 31, 75, 0.25);
+}
+
+.cards h3 { margin: 10px 0 4px; }
+.cards p  { margin: 4px 0; }
+
+.price { font-weight: bold; color: #0B1F4B; }
+
+.badge {                            /* badge in the TOP-RIGHT corner of the card */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  background-color: #E0A526;        /* Tile Gold — badges */
+  color: #0B1F4B;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 999px;
+}
+
+.emoji-box {                        /* coloured box instead of a photo */
+  padding: 18px 0;
+  background-color: #FAF6EE;
+  border-radius: 8px;
+  font-size: 44px;
+  text-align: center;
+}
+
+/* tablet from 768px: 2 cards per row */
+@media (min-width: 768px) {
+  .cards .card { width: calc(50% - 8px); }          /* minus half the 16px gap */
+  .logo        { font-size: 20px; }
+  .main-nav a  { font-size: 16px; padding: 8px 14px; }
+  .hero        { padding: 64px 24px; }
+}
+
+/* desktop from 1200px: 3 cards per row */
+@media (min-width: 1200px) {
+  .cards .card { width: calc((100% - 32px) / 3); }  /* minus two 16px gaps */
+}
+
+/* ---------- 5. Footer ---------- */
+.site-footer {
+  margin-top: 32px;
+  padding: 18px 16px;
+  background-color: #0B1F4B;        /* Registan Night — footer */
+  color: #FFFFFF;
+  font-size: 14px;
+  text-align: center;
+}
+.site-footer p { margin: 0; }
+
+/* ---------- 6. Booking form (booking.html) ---------- */
+.page-title { text-align: center; margin: 24px 16px 8px; }
+
+.booking-form {
+  max-width: 540px;
+  margin: 0 auto 24px;
+  padding: 20px 16px;
+  background-color: #FFFFFF;
+  border: 1px solid #E3DCCB;
+  border-radius: 10px;
+}
+
+.booking-form label {               /* label above the field */
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: bold;
+  color: #0B1F4B;
+}
+
+/* red star built with ::after — it is NOT typed in the HTML */
+.booking-form label.required::after {
+  content: " *";
+  color: #C0392B;                   /* Brick Red — required star */
+}
+
+/* GROUP SELECTOR 2: inputs and selects share one rule */
+.booking-form input,
+.booking-form select {
+  display: block;
+  width: 100%;                      /* fields 100% wide */
+  padding: 10px 12px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #222222;
+  background-color: #FFFFFF;
+  border: 1px solid #B9B29E;
+  border-radius: 6px;
+}
+
+.booking-form input:focus,
+.booking-form select:focus {        /* clear :focus style */
+  outline: none;
+  background-color: #FFFDF4;
+  border-color: #E0A526;
+  box-shadow: 0 0 0 3px rgba(224, 165, 38, 0.35);
+}
+
+/* JS adds .field-error to a wrong field (higher specificity, no !important) */
+.booking-form .field-error {
+  border: 2px solid #C0392B;        /* Brick Red highlight */
+  background-color: #FDEEEC;
+}
+
+.btn-submit {
+  display: block;
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px;
+  border: 0;
+  border-radius: 6px;
+  background-color: #0B1F4B;        /* Registan Night — buttons */
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-submit:hover {                 /* Tile Gold — hover state */
+  background-color: #E0A526;
+  color: #0B1F4B;
+}
+
+#price-box {                        /* ID SELECTOR — live total */
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #FAF6EE;
+  border-left: 5px solid #E0A526;
+  color: #0B1F4B;
+  font-weight: bold;
+}
+
+.form-msg {
+  display: none;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.form-msg.error {                   /* red validation message */
+  display: block;
+  background-color: #FDEEEC;
+  border: 1px solid #C0392B;
+  color: #C0392B;
+}
+
+.form-msg.success {                 /* green confirmation */
+  display: block;
+  background-color: #EAF6EC;
+  border: 1px solid #1E7E34;
+  color: #1E7E34;
+}
+
+/* ---------- 7. Part C — helpers used ONLY by index-bootstrap.html ---------- */
+/* index-bootstrap.html loads Bootstrap 5 first, then this file. */
+
+.bootstrap-page .card {
+  border-color: #E3DCCB;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.bootstrap-page .card:hover {       /* same "rise" as Part A */
+  transform: translateY(-6px);
+  box-shadow: 0 10px 18px rgba(11, 31, 75, 0.25);
+}
+
+.bg-registan { background-color: #0B1F4B; }      /* navbar colour */
+
+.bg-registan .navbar-brand { color: #FFFFFF; }
+
+.bg-registan .nav-link { color: #FFFFFF; }
+
+.bg-registan .nav-link:hover,
+.bg-registan .nav-link:focus {      /* gold hover like Part A */
+  background-color: #E0A526;
+  color: #0B1F4B;
+}
+
+.bg-registan .nav-link.active {     /* current page: gold bottom border */
+  border-bottom: 4px solid #E0A526;
+}
